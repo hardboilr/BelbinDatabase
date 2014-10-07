@@ -7,7 +7,7 @@ package belbindatabase;
 
 /**
  *
- * @author Tobias
+ * @author Tobias & Christian
  */
 public class BelbinDatabase {
 
