@@ -1,3 +1,1 @@
-Tobias, 5, 10, 3, 6
-Christian, 7, 3, 4, 2 
-Jesper, 2, 4, 8, 2, 
+Hans,3,5,2,8
