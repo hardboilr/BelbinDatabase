@@ -7,15 +7,8 @@ package belbindatabase;
 
 /**
  *
- * @author Tobias & Christian
+ * @author Tobias
  */
-public class BelbinDatabase {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic hee
-    }
+public class Control {
     
 }
