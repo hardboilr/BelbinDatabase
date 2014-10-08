@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class FileHandler
 {
-    ArrayList<Person> personArray;
+    static ArrayList<Person> personArray = new ArrayList<Person>();
     
     public static ArrayList<Person> loadFile(String filename)
     {
         Scanner file_scanner = null;
-        ArrayList<Person> personArray = new ArrayList<Person>();
+        //ArrayList<Person> personArray = new ArrayList<Person>();
 
         try {
             file_scanner = new Scanner(new File(filename));  //Connection to the file using the Scanner object
@@ -34,6 +34,7 @@ public class FileHandler
             int fin = sc.nextInt();
             Person p = new Person(navn, adm, ana, cre, fin);
             personArray.add(p);  //Reading in a single line and saving in the ArrayList
+            System.out.println("Added to array: " + p);
         }
 
         file_scanner.close();  //Closing the file
@@ -42,7 +43,10 @@ public class FileHandler
     
     public static ArrayList<Person> savePerson(String input)
     {
-        ArrayList<Person> personArray = new ArrayList<Person>();
+       
+        //ArrayList<Person> personArray = new ArrayList<Person>();
+        Scanner readLine = new Scanner(input);
+        input = readLine.nextLine();
         Scanner sc = new Scanner(input).useDelimiter(",");
         String navn = sc.next();
         int adm = sc.nextInt();
@@ -50,12 +54,12 @@ public class FileHandler
         int cre = sc.nextInt();
         int fin = sc.nextInt();
         Person p = new Person(navn, adm, ana, cre, fin);
-        personArray.add(p); 
-        System.out.println(p);
-        
-        return personArray; 
-        
+        personArray.add(p);
+        System.out.println("Person to array: " + p);
+        System.out.println(personArray.size());
+        return personArray;    
     }
+    
     
     /**
      * This method saves an ArrayList of strings to disk.
