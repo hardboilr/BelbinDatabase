@@ -10,7 +10,7 @@ public class FileHandler
 {
     ArrayList<Person> personArray;
     
-    public static ArrayList<Person> loadPerson(String filename)
+    public static ArrayList<Person> loadFile(String filename)
     {
         Scanner file_scanner = null;
         ArrayList<Person> personArray = new ArrayList<Person>();
@@ -25,8 +25,8 @@ public class FileHandler
 
         while (file_scanner.hasNextLine()) //File found. Reading one line.         
         {      
-            String linje = file_scanner.nextLine();
-            Scanner sc = new Scanner(linje).useDelimiter(",");
+            String line = file_scanner.nextLine();
+            Scanner sc = new Scanner(line).useDelimiter(",");
             String navn = sc.next();
             int adm = sc.nextInt();
             int ana = sc.nextInt();
@@ -39,7 +39,24 @@ public class FileHandler
         file_scanner.close();  //Closing the file
         return personArray;    //returning the arraylist
     }
-
+    
+    public static ArrayList<Person> savePerson(String input)
+    {
+        ArrayList<Person> personArray = new ArrayList<Person>();
+        Scanner sc = new Scanner(input).useDelimiter(",");
+        String navn = sc.next();
+        int adm = sc.nextInt();
+        int ana = sc.nextInt();
+        int cre = sc.nextInt();
+        int fin = sc.nextInt();
+        Person p = new Person(navn, adm, ana, cre, fin);
+        personArray.add(p); 
+        System.out.println(p);
+        
+        return personArray; 
+        
+    }
+    
     /**
      * This method saves an ArrayList of strings to disk.
      * Each string object in this array will be one line in the text file. 
@@ -50,7 +67,7 @@ public class FileHandler
      * @params filename String the name of the file (that is located in the project folder).
      * @return true if everything went well. False if an exception was raised.
      */
-    public static boolean savePersons(ArrayList<Person> personArray, String filename)
+    public static boolean saveFile(ArrayList<Person> personArray, String filename)
     {
         if( personArray == null ) { return false;  }  //Checking parameter for null.
         FileWriter output;  //Creating reference for filewriter.
@@ -71,5 +88,7 @@ public class FileHandler
 
         return true;
     }
+    
+    
 
 }//END CLASS
