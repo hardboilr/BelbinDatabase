@@ -12,8 +12,11 @@ public class ControlEngine
     
     public ControlEngine()
     {
+        // add automatic display of list 
         personList = FileHandler.loadFile("persons.txt");
         System.out.println("after load   "+ personList.toString() );
+        
+        
     }
     
     public void makeNewPerson(String name, int admin, int analyst, int creator, int finalizer)

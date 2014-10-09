@@ -38,7 +38,6 @@ public class GUI extends javax.swing.JFrame
         jButton_Load = new javax.swing.JButton();
         jButton_Save = new javax.swing.JButton();
         jButton_Clear = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jTextField_Name = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jButton_addPerson = new javax.swing.JButton();
@@ -55,10 +54,14 @@ public class GUI extends javax.swing.JFrame
         jTextField_Fin = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField_Crea = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(627, 450));
+        setMaximumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
+        setResizable(false);
 
+        jButton_Load.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jButton_Load.setText("LOAD LIST");
         jButton_Load.setToolTipText("load list from file");
         jButton_Load.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +70,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jButton_Save.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jButton_Save.setText("SAVE LIST");
         jButton_Save.setToolTipText("save list file");
         jButton_Save.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +79,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jButton_Clear.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jButton_Clear.setText("CLEAR LIST");
         jButton_Clear.setToolTipText("this will clear the whole list");
         jButton_Clear.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +87,6 @@ public class GUI extends javax.swing.JFrame
                 jButton_ClearActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Name, Adm,  Ana,  Crea,  Fin");
 
         jTextField_Name.setToolTipText("input name");
         jTextField_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +97,8 @@ public class GUI extends javax.swing.JFrame
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton_addPerson.setText("Add person");
+        jButton_addPerson.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
+        jButton_addPerson.setText("create");
         jButton_addPerson.setToolTipText("add person to list");
         jButton_addPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +106,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jButton_deleteFromList.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jButton_deleteFromList.setText("Delete from list");
         jButton_deleteFromList.setToolTipText("select a name from the list first");
         jButton_deleteFromList.addActionListener(new java.awt.event.ActionListener() {
@@ -110,13 +115,10 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
-        jList_personList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        jList_personList.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jScrollPane1.setViewportView(jList_personList);
 
+        jButton_checkArray.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         jButton_checkArray.setText("checkArray");
         jButton_checkArray.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,8 +126,10 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel2.setText("Name");
 
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel3.setText("Administrator");
 
         jTextField_Adm.setToolTipText("input name");
@@ -135,6 +139,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel4.setText("Analyst");
 
         jTextField_Ana.setToolTipText("input name");
@@ -144,6 +149,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel5.setText("Creative");
 
         jTextField_Fin.setToolTipText("input name");
@@ -153,6 +159,7 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel6.setText("Finisher");
 
         jTextField_Crea.setToolTipText("input name");
@@ -162,73 +169,73 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
+        jLabel7.setText("Create person");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton_Load)
                         .addGap(32, 32, 32)
                         .addComponent(jButton_Save))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_deleteFromList)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jButton_checkArray))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton_checkArray)
-                                .addGap(19, 19, 19))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton_deleteFromList, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                        .addComponent(jButton_addPerson))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jTextField_Adm, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextField_Fin, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextField_Ana, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextField_Crea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))))
-                                .addContainerGap(75, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1))))
+                                        .addGap(25, 25, 25)
+                                        .addComponent(jButton_addPerson)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jTextField_Adm, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField_Ana, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextField_Crea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_Load)
                             .addComponent(jButton_Save))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(13, 13, 13)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+                            .addComponent(jSeparator1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -244,20 +251,18 @@ public class GUI extends javax.swing.JFrame
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jTextField_Crea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextField_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton_addPerson)
-                        .addGap(39, 39, 39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_checkArray)
                         .addGap(46, 46, 46)
                         .addComponent(jButton_deleteFromList, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
+                        .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42))
         );
 
@@ -307,6 +312,14 @@ public class GUI extends javax.swing.JFrame
               listModel.addElement(as.get(i));
               System.out.println("Added to list: " + as.get(i));
         }
+        //clear text fields        
+        jTextField_Name.setText("");
+        jTextField_Adm.setText("");
+        jTextField_Fin.setText("");
+        jTextField_Crea.setText("");
+        jTextField_Ana.setText("");
+        
+        
     }//GEN-LAST:event_jButton_addPersonActionPerformed
 
     private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
@@ -379,12 +392,12 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton jButton_addPerson;
     private javax.swing.JButton jButton_checkArray;
     private javax.swing.JButton jButton_deleteFromList;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList jList_personList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

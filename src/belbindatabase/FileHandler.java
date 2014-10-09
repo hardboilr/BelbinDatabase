@@ -40,7 +40,8 @@ public class FileHandler
         file_scanner.close();  //Closing the file
         return personArray;    //returning the arraylist
     }
-    
+    /*
+    * /////////REDUNDANT//////////////
     public static ArrayList<Person> savePerson(String input)
     {
        
@@ -59,7 +60,7 @@ public class FileHandler
         System.out.println(personArray.size());
         return personArray;    
     }
-    
+    */
     
     /**
      * This method saves an ArrayList of strings to disk.
