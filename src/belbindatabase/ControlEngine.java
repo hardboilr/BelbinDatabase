@@ -1,6 +1,7 @@
 package belbindatabase;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -9,14 +10,11 @@ import java.util.ArrayList;
 public class ControlEngine 
 {
     ArrayList<Person> personList;
+    DefaultListModel listModel = new DefaultListModel();
     
     public ControlEngine()
     {
-        // add automatic display of list 
-        personList = FileHandler.loadFile("persons.txt");
-        System.out.println("after load   "+ personList.toString() );
-        
-        
+        //personList = FileHandler.loadFile("persons.txt");
     }
     
     public void makeNewPerson(String name, int admin, int analyst, int creator, int finalizer)

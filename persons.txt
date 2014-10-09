@@ -5,10 +5,9 @@ palle,3,4,2,1
 lille,3,2,3,4
 kalle,3,2,1,3
 yasmin,32,2,2,2
-yasmin,32,2,2,2
 hej,2,2,2,2
 lol,2,2,2,2
 hans,3,3,2,2
 alex,2,2,2,2
 borge,2,2,2,2
-t-rex,4,3,2,1
+balle,2,2,2,2
