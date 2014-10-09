@@ -24,7 +24,8 @@ public class Person
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "" + navn + "," + adm + "," + ana + "," + cre + "," + fin;
     }
 }

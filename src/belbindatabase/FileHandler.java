@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class FileHandler
 {
-    static ArrayList<Person> personArray = new ArrayList<Person>();
+   
     
     public static ArrayList<Person> loadFile(String filename)
     {
+        ArrayList<Person> personArray = new ArrayList<Person>();
         Scanner file_scanner = null;
-        //ArrayList<Person> personArray = new ArrayList<Person>();
 
         try {
             file_scanner = new Scanner(new File(filename));  //Connection to the file using the Scanner object
@@ -44,7 +44,7 @@ public class FileHandler
     public static ArrayList<Person> savePerson(String input)
     {
        
-        //ArrayList<Person> personArray = new ArrayList<Person>();
+        ArrayList<Person> personArray = new ArrayList<Person>();
         Scanner readLine = new Scanner(input);
         input = readLine.nextLine();
         Scanner sc = new Scanner(input).useDelimiter(",");
