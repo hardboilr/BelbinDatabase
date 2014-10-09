@@ -15,7 +15,7 @@ import javax.swing.DefaultListModel;
 public class GUI extends javax.swing.JFrame 
 {
     DefaultListModel listModel = new DefaultListModel();
-    ArrayList<Person> as;
+    //ArrayList<Person> as;
     ControlEngine controlEngine;
     
   
@@ -24,11 +24,11 @@ public class GUI extends javax.swing.JFrame
         initComponents();
         jList_personList.setModel(listModel);
         controlEngine = new ControlEngine();
-        as = FileHandler.loadFile("persons.txt");
-        for (int  i = 0; i  < as.size(); i ++) 
+        controlEngine.personList = FileHandler.loadFile("persons.txt");
+        for (int  i = 0; i  < controlEngine.getPersonListSize(); i ++) 
         {
-              listModel.addElement(as.get(i));
-              System.out.println("Added to list: " + as.get(i));
+              listModel.addElement(controlEngine.personList.get(i));
+              System.out.println("Added to list: " + controlEngine.personList.get(i));
         }
     }
 
@@ -259,19 +259,19 @@ public class GUI extends javax.swing.JFrame
     private void jButton_deleteFromListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteFromListActionPerformed
         int index = jList_personList.getSelectedIndex();
         listModel.remove(index);
-        as.remove(index);
-        FileHandler.saveFile(as, "persons.txt");
+        controlEngine.personList.remove(index);
+        FileHandler.saveFile(controlEngine.personList, "persons.txt");
     }//GEN-LAST:event_jButton_deleteFromListActionPerformed
 
     private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
         listModel.removeAllElements();
-        int arraySize = as.size(); //get arraySize
+        int arraySize = controlEngine.personList.size(); //get arraySize
         System.out.println("arraysize is: " + arraySize);
         for (int i = 0; i < arraySize; i++)
         {
-            as.remove(0); // we run through the loop arraySize times and delete the index at position 0. Clever huh!
+            controlEngine.personList.remove(0); // we run through the loop arraySize times and delete the index at position 0. Clever huh!
         }
-        FileHandler.saveFile(as, "persons.txt");
+        FileHandler.saveFile(controlEngine.personList, "persons.txt");
         
     }//GEN-LAST:event_jButton_ClearActionPerformed
 
@@ -287,11 +287,11 @@ public class GUI extends javax.swing.JFrame
         
         //we load the list again
         listModel.removeAllElements();
-        as = FileHandler.loadFile("persons.txt");
-        for (int  i = 0; i  < as.size(); i ++) 
+        controlEngine.personList = FileHandler.loadFile("persons.txt");
+        for (int  i = 0; i  < controlEngine.personList.size(); i ++) 
         {
-              listModel.addElement(as.get(i));
-              System.out.println("Added to list: " + as.get(i));
+              listModel.addElement(controlEngine.personList.get(i));
+              System.out.println("Added to list: " + controlEngine.personList.get(i));
         }
         //clear text fields        
         jTextField_Name.setText("");
@@ -310,7 +310,7 @@ public class GUI extends javax.swing.JFrame
     }//GEN-LAST:event_jTextField_NameActionPerformed
 
     private void jButton_checkArrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_checkArrayActionPerformed
-        System.out.println("Array size is  " + as.size());
+        System.out.println("Array size is  " + controlEngine.personList.size());
     }//GEN-LAST:event_jButton_checkArrayActionPerformed
 
     private void jTextField_AdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AdmActionPerformed

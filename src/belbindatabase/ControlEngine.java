@@ -10,10 +10,11 @@ import javax.swing.DefaultListModel;
 public class ControlEngine 
 {
     ArrayList<Person> personList;
-    DefaultListModel listModel = new DefaultListModel();
+    //DefaultListModel listModel = new DefaultListModel();
     
     public ControlEngine()
     {
+        
         //personList = FileHandler.loadFile("persons.txt");
     }
     
@@ -25,4 +26,8 @@ public class ControlEngine
     FileHandler.saveFile(personList, "persons.txt");
     }
     
+    public int getPersonListSize()
+    {
+        return personList.size();
+    }  
 }
