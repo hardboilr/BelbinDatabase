@@ -260,47 +260,29 @@ public class GUI extends javax.swing.JFrame
         int index = jList_personList.getSelectedIndex();
         listModel.remove(index);
         controlEngine.personList.remove(index);
-        FileHandler.saveFile(controlEngine.personList, "persons.txt");
+        controlEngine.save();
     }//GEN-LAST:event_jButton_deleteFromListActionPerformed
 
     private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
-        listModel.removeAllElements();
-        int arraySize = controlEngine.personList.size(); //get arraySize
-        System.out.println("arraysize is: " + arraySize);
-        for (int i = 0; i < arraySize; i++)
-        {
-            controlEngine.personList.remove(0); // we run through the loop arraySize times and delete the index at position 0. Clever huh!
-        }
-        FileHandler.saveFile(controlEngine.personList, "persons.txt");
+        clearList();
+        controlEngine.clearFile();
+        controlEngine.save();
         
     }//GEN-LAST:event_jButton_ClearActionPerformed
 
     private void jButton_addPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addPersonActionPerformed
         
+        //createPerson();
         String name = jTextField_Name.getText();
         int admin = Integer.parseInt(jTextField_Adm.getText());
         int finalizer = Integer.parseInt(jTextField_Fin.getText());
         int creator = Integer.parseInt( jTextField_Crea.getText());
         int analyst = Integer.parseInt( jTextField_Ana.getText());
         controlEngine.makeNewPerson(name, admin, finalizer, creator, analyst);
-        //listModel.addElement(controlEngine.personList.toString());
         
-        //we load the list again
-        listModel.removeAllElements();
-        controlEngine.personList = FileHandler.loadFile("persons.txt");
-        for (int  i = 0; i  < controlEngine.personList.size(); i ++) 
-        {
-              listModel.addElement(controlEngine.personList.get(i));
-              System.out.println("Added to list: " + controlEngine.personList.get(i));
-        }
-        //clear text fields        
-        jTextField_Name.setText("");
-        jTextField_Adm.setText("");
-        jTextField_Fin.setText("");
-        jTextField_Crea.setText("");
-        jTextField_Ana.setText("");
-        
-        
+        clearList();
+        controlEngine.load();
+        addToList();
     }//GEN-LAST:event_jButton_addPersonActionPerformed
 
     private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
@@ -365,6 +347,30 @@ public class GUI extends javax.swing.JFrame
             }
         });
     }
+    
+    public void clearList()
+    {
+        listModel.removeAllElements(); 
+        
+    }
+    
+    public void addToList()
+    {
+        for (int  i = 0; i  < controlEngine.personList.size(); i ++) 
+        {
+            listModel.addElement(controlEngine.personList.get(i));
+            System.out.println("Added to list: " + controlEngine.personList.get(i));
+        }
+        jTextField_Name.setText("");
+        jTextField_Adm.setText("");
+        jTextField_Fin.setText("");
+        jTextField_Crea.setText("");
+        jTextField_Ana.setText("");
+    }
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Clear;
