@@ -40,10 +40,6 @@
                       <Component id="jSeparator1" min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                              <Component id="jButton_checkArray" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -82,7 +78,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,18 +119,10 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton_addPerson" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton_checkArray" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton_deleteFromList" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton_Clear" min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace pref="173" max="32767" attributes="0"/>
+                      <Component id="jButton_deleteFromList" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButton_Clear" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="1" pref="502" max="32767" attributes="0"/>
@@ -213,17 +201,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton_checkArray">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="11" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="checkArray"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_checkArrayActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

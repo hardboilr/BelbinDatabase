@@ -12,24 +12,17 @@ import javax.swing.DefaultListModel;
  *
  * @author Tobias
  */
-public class GUI extends javax.swing.JFrame 
-{
+public class GUI extends javax.swing.JFrame {
+
     DefaultListModel listModel = new DefaultListModel();
-    //ArrayList<Person> as;
     ControlEngine controlEngine;
-    
-  
-    public GUI()
-    {
+
+    public GUI() {
         initComponents();
         jList_personList.setModel(listModel);
         controlEngine = new ControlEngine();
-        controlEngine.personList = FileHandler.loadFile("persons.txt");
-        for (int  i = 0; i  < controlEngine.getPersonListSize(); i ++) 
-        {
-              listModel.addElement(controlEngine.personList.get(i));
-              System.out.println("Added to list: " + controlEngine.personList.get(i));
-        }
+        controlEngine.load();
+        addToList();
     }
 
     /**
@@ -48,7 +41,6 @@ public class GUI extends javax.swing.JFrame
         jButton_deleteFromList = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList_personList = new javax.swing.JList();
-        jButton_checkArray = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField_Adm = new javax.swing.JTextField();
@@ -104,14 +96,6 @@ public class GUI extends javax.swing.JFrame
 
         jList_personList.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jScrollPane1.setViewportView(jList_personList);
-
-        jButton_checkArray.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
-        jButton_checkArray.setText("checkArray");
-        jButton_checkArray.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_checkArrayActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel2.setText("Name");
@@ -176,9 +160,6 @@ public class GUI extends javax.swing.JFrame
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
-                                .addComponent(jButton_checkArray))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -205,7 +186,7 @@ public class GUI extends javax.swing.JFrame
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton_deleteFromList))))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,15 +220,10 @@ public class GUI extends javax.swing.JFrame
                             .addComponent(jTextField_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton_addPerson)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton_checkArray)
-                                .addGap(108, 108, 108))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton_deleteFromList, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                        .addComponent(jButton_deleteFromList, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))
                 .addGap(42, 42, 42))
@@ -257,9 +233,7 @@ public class GUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_deleteFromListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteFromListActionPerformed
-        int index = jList_personList.getSelectedIndex();
-        listModel.remove(index);
-        controlEngine.personList.remove(index);
+        deleteFromList();
         controlEngine.save();
     }//GEN-LAST:event_jButton_deleteFromListActionPerformed
 
@@ -267,33 +241,18 @@ public class GUI extends javax.swing.JFrame
         clearList();
         controlEngine.clearFile();
         controlEngine.save();
-        
+
     }//GEN-LAST:event_jButton_ClearActionPerformed
 
     private void jButton_addPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addPersonActionPerformed
-        
-        //createPerson();
-        String name = jTextField_Name.getText();
-        int admin = Integer.parseInt(jTextField_Adm.getText());
-        int finalizer = Integer.parseInt(jTextField_Fin.getText());
-        int creator = Integer.parseInt( jTextField_Crea.getText());
-        int analyst = Integer.parseInt( jTextField_Ana.getText());
-        controlEngine.makeNewPerson(name, admin, finalizer, creator, analyst);
-        
+        createPerson();
         clearList();
         controlEngine.load();
         addToList();
     }//GEN-LAST:event_jButton_addPersonActionPerformed
 
     private void jTextField_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NameActionPerformed
-        
-        
-                
     }//GEN-LAST:event_jTextField_NameActionPerformed
-
-    private void jButton_checkArrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_checkArrayActionPerformed
-        System.out.println("Array size is  " + controlEngine.personList.size());
-    }//GEN-LAST:event_jButton_checkArrayActionPerformed
 
     private void jTextField_AdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_AdmActionPerformed
         // TODO add your handling code here:
@@ -314,8 +273,7 @@ public class GUI extends javax.swing.JFrame
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) 
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -347,17 +305,14 @@ public class GUI extends javax.swing.JFrame
             }
         });
     }
-    
-    public void clearList()
-    {
-        listModel.removeAllElements(); 
-        
+
+    public void clearList() {
+        listModel.removeAllElements();
+
     }
-    
-    public void addToList()
-    {
-        for (int  i = 0; i  < controlEngine.personList.size(); i ++) 
-        {
+
+    public void addToList() {
+        for (int i = 0; i < controlEngine.personList.size(); i++) {
             listModel.addElement(controlEngine.personList.get(i));
             System.out.println("Added to list: " + controlEngine.personList.get(i));
         }
@@ -367,15 +322,26 @@ public class GUI extends javax.swing.JFrame
         jTextField_Crea.setText("");
         jTextField_Ana.setText("");
     }
-    
-    
-    
-    
+
+    public void createPerson() {
+        String name = jTextField_Name.getText();
+        int admin = Integer.parseInt(jTextField_Adm.getText());
+        int finalizer = Integer.parseInt(jTextField_Fin.getText());
+        int creator = Integer.parseInt(jTextField_Crea.getText());
+        int analyst = Integer.parseInt(jTextField_Ana.getText());
+        controlEngine.makeNewPerson(name, admin, finalizer, creator, analyst);
+    }
+
+    public void deleteFromList() {
+        int index = jList_personList.getSelectedIndex();
+        listModel.remove(index);
+        controlEngine.personList.remove(index);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Clear;
     private javax.swing.JButton jButton_addPerson;
-    private javax.swing.JButton jButton_checkArray;
     private javax.swing.JButton jButton_deleteFromList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
