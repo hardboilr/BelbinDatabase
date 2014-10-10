@@ -54,6 +54,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Belkin Database");
         setMaximumSize(new java.awt.Dimension(530, 600));
         setPreferredSize(new java.awt.Dimension(530, 600));
         setResizable(false);

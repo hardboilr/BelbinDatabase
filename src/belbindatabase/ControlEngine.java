@@ -1,7 +1,6 @@
 package belbindatabase;
-
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+//import javax.swing.DefaultListModel;
 
 /**
  *
@@ -14,8 +13,6 @@ public class ControlEngine
     
     public ControlEngine()
     {
-        
-        //personList = FileHandler.loadFile("persons.txt");
     }
     
     public void makeNewPerson(String name, int admin, int analyst, int creator, int finalizer)
