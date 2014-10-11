@@ -6,10 +6,18 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author Glorious Teacher
+ */
+
 public class FileHandler
 {
-   
-    
+    //---------------------------------------------------------------------
+    // Class provided to us curtosy of teachers
+    // Filehandler has to methods
+    // one that saves a personArray to file and one that load from file
+    // also does some checking whether file is found and if array is empty
+    //---------------------------------------------------------------------
     public static ArrayList<Person> loadFile(String filename)
     {
         ArrayList<Person> personArray = new ArrayList<Person>();
@@ -34,44 +42,12 @@ public class FileHandler
             int fin = sc.nextInt();
             Person p = new Person(navn, adm, ana, cre, fin);
             personArray.add(p);  //Reading in a single line and saving in the ArrayList
-            System.out.println("Added to array: " + p);
         }
 
         file_scanner.close();  //Closing the file
         return personArray;    //returning the arraylist
     }
-    /*
-    * /////////REDUNDANT//////////////
-    public static ArrayList<Person> savePerson(String input)
-    {
-       
-        ArrayList<Person> personArray = new ArrayList<Person>();
-        Scanner readLine = new Scanner(input);
-        input = readLine.nextLine();
-        Scanner sc = new Scanner(input).useDelimiter(",");
-        String navn = sc.next();
-        int adm = sc.nextInt();
-        int ana = sc.nextInt();
-        int cre = sc.nextInt();
-        int fin = sc.nextInt();
-        Person p = new Person(navn, adm, ana, cre, fin);
-        personArray.add(p);
-        System.out.println("Person to array: " + p);
-        System.out.println(personArray.size());
-        return personArray;    
-    }
-    */
-    
-    /**
-     * This method saves an ArrayList of strings to disk.
-     * Each string object in this array will be one line in the text file. 
-     * The text file is overwritten, what ever was in there is lost. 
-     *
-     * @param stringArray ArrayList<String> Each String object in this array will be 
-     * saved as one line in the text file. 
-     * @params filename String the name of the file (that is located in the project folder).
-     * @return true if everything went well. False if an exception was raised.
-     */
+
     public static boolean saveFile(ArrayList<Person> personArray, String filename)
     {
         if( personArray == null ) { return false;  }  //Checking parameter for null.
@@ -93,7 +69,4 @@ public class FileHandler
 
         return true;
     }
-    
-    
-
-}//END CLASS
+}
